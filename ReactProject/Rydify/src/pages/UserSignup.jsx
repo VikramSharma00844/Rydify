@@ -34,8 +34,8 @@ async function onSubmit(data){
 
         <div className="container m-5">
             <form onSubmit={handleSubmit(onSubmit)}>
-                <h1>User Sign Up</h1>
-                <div className="row mt-3">
+                <h1 className="text-center mb-5">User Sign Up</h1>
+                <div className="row mt-3 d-flex justify-content-center align-items-center">
 
 
                     <div className="col-md-4 mb-3">

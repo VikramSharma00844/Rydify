@@ -16,7 +16,7 @@ function Footer(){
                                 <div className="f-about-info">
                                     We offer a range of the finest and most premium cars and bikes on rent.
                                 </div>
-                                <ul class="ftr-list">
+                                <ul className="ftr-list">
                                     <li><i className="feather feather-phone-call"></i><a href="tel:1236540214">123 654 0214</a></li>
                                     <li><i className="feather feather-mail"></i>carntelinfo@gmail.com</li>
                                     <li><i className="feather feather-home"></i>55/11 ronin tower New York</li>
@@ -87,7 +87,7 @@ function Footer(){
     
                                 </div> 
 
-                                <div claclassNamess="twm-subscribe-nl">
+                                <div className="twm-subscribe-nl">
                                     <div className="twm-nl-title">
                                         Subscribe To Our Newsletter Today! 
                                     </div>
