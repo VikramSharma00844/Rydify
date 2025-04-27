@@ -1,6 +1,7 @@
 import axios from "axios";
 import {server_url} from "../utils/script.jsx";
 import {useForm} from "react-hook-form";
+import {useNavigate} from "react-router-dom";
 
 function UserSignin(){
     const{
@@ -10,10 +11,28 @@ function UserSignin(){
         reset
     }=useForm();
 
+    const navigate=useNavigate();
+
     async function onSubmit(data){
-      console.log(data);
-      let url=server_url+"signin";
-      let response=await axios.post(url,data);
+      try{
+        console.log(data);
+       let url=server_url+"user-signin";
+        let response=await axios.post(url,data);
+
+        let {error,message}=response.data;
+        if(error){
+          console.log(message)
+        }
+        else{
+          console.log(message)
+          setTimeout(()=>{
+            navigate('/user/home');
+          },2000);
+        }
+      }
+      catch(error){
+
+      }
     }
     return(
         <>

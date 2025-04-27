@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom"
 
-function PublicNavbar(){
+function AdminNavbar(){
     return(
         <>
 <header className="site-header header-style-1 mobile-sider-drawer-menu light-hdr">
@@ -34,7 +34,7 @@ function PublicNavbar(){
                             <div className="nav-animation header-nav navbar-collapse collapse d-flex justify-content-between">
                         
                                 <ul className=" nav navbar-nav">
-                                    <li><Link to="/">Home</Link></li>
+                                    <li><Link to="/admin/admin-login">Admin Login</Link></li>
                                     {/* <li><a href="about-us.html">About</a></li> */}
                                     <li><Link to="about">About</Link></li>
                                     <li className="has-child">
@@ -110,4 +110,4 @@ function PublicNavbar(){
         </>
     )
 }
-export default PublicNavbar;
+export default AdminNavbar

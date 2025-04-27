@@ -1,6 +1,7 @@
 import {useForm} from "react-hook-form";
 import axios from "axios";
 import {server_url} from "../utils/script.jsx";
+import {useNavigate} from "react-router-dom";
 
 function UserSignup(){
 const{
@@ -10,7 +11,10 @@ const{
     reset
 }=useForm();
 
+const navigate=useNavigate();
+
 async function onSubmit(data){
+   try{
     console.log(data);
     let url=server_url+"user-signup";
     let response=await axios.post(url,data);
@@ -19,11 +23,19 @@ async function onSubmit(data){
 
     if(error)
     {
-        console.log("error");
+        console.log(message);
     }
     else{
+        reset();
         console.log("Record inserted")
+        setTimeout(()=>{
+            navigate('user-signin')
+        },2000);
     }
+   }
+   catch(error){
+
+   }
 
 } 
 
@@ -34,8 +46,8 @@ async function onSubmit(data){
 
         <div className="container m-5">
             <form onSubmit={handleSubmit(onSubmit)}>
-                <h1 className="text-center mb-5">User Sign Up</h1>
-                <div className="row mt-3 d-flex justify-content-center align-items-center">
+                <h1 className="text-center mb-5 ">User Sign Up</h1>
+                <div className="row mt-3 ms-5 d-flex justify-content-center align-items-center">
 
 
                     <div className="col-md-4 mb-3">
@@ -84,7 +96,7 @@ async function onSubmit(data){
                         <label>Gender</label>
                     </div>
                     <div className="col-md-8 mb-3">
-                    <select  id="gender" classname="form-control" {...register('gender',{required:true})} >
+                    <select  id="gender" className="form-control" {...register('gender',{required:true})} >
                         <option value="">--Select Gender--</option>
                         <option value="male">Male</option>
                         <option value="female">Female</option>
@@ -119,7 +131,7 @@ async function onSubmit(data){
                         <input type="file" id="profile-photo" className="form-control"  />
                     </div>
 
-                    <button>Submit</button>
+                    <button className="btn btn-primary">Submit</button>
                 </div>
             </form>
         </div>
