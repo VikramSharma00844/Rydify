@@ -57,7 +57,7 @@ indexController.UserSigninHandler=(req,res)=>{
 }
 
 indexController.adminLoginHandler=(req,res)=>{
-    
+   
     console.log(req.body);
     let email=req.body.email;
     let password=req.body.password;
@@ -88,5 +88,55 @@ indexController.adminLoginHandler=(req,res)=>{
         }
     })
 }
+
+// Admin API's
+indexController.addCategoryHandler=(req,res)=>{
+    let category=req.body.category;
+    
+
+    let insertQuery="insert into categories(category) values(?)";
+
+    connection.query(insertQuery,category,(error)=>{
+        if(error){
+            res.json({error:true,message:error.message})
+        }
+        else{
+            res.json({error:false,message:"Category Added Successfully"})
+        }
+    })
+}
+
+
+indexController.addDealerHandler=(req,res)=>{
+    console.log(req.body);
+    let name=req.body.name;
+    let email=req.body.email;
+    let password=req.body.password;
+    let adhar=req.body.adhar;
+    let pan=req.body.pan;
+    let mobile=req.body.mobile;
+    let gender=req.body.gender;
+    let address=req.body.address;
+    let city=req.body.city;
+    let status=req.body.status;
+    let photo=req.body.photo;
+
+    // const [name,email,password,adhar,pan,mobile,gender,address,city,status,photo]=req.body;
+
+    let values=[name,email,password,adhar,pan,mobile,gender,address,city,status,photo];
+
+    let insertQuery="insert into dealer(name,email,password,adhar,pan,mobile,gender,address,city,status,photo) values(?,?,?,?,?,?,?,?,?,?,?) ";
+
+    connection.query(insertQuery,values,(error)=>{
+        if(error)
+        {
+            res.json({error:true,message:error.message});
+        }
+        else{
+            res.json({error:false,message:"Dealer Added Successfully"})
+        }
+    })
+}
+
 
 module.exports=indexController

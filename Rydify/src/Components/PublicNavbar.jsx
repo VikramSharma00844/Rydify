@@ -42,6 +42,9 @@ function PublicNavbar(){
                                     
                                     {/* <li><a href="contact-us.html">Contact</a></li>   */}
                                     <li><Link to="contact">Contact</Link></li>
+
+                                    {/* Dealer */}
+                                    <li><Link to="dealer">Dealer</Link></li>
                                     
                                     <li className="has-child">
                                         <a href="javascript:;">User</a>

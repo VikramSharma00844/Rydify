@@ -2,6 +2,9 @@ const express=require('express');
 const indexController=require('./controller/index.controller');
 const app=express();
 
+var cookieParser=require('cookie-parser');
+app.use(cookieParser());
+
 const cors=require('cors');
 app.use(cors());
 
@@ -12,7 +15,9 @@ const jwt=require('jsonwebtoken');
 const secret='123456789!@#$%%^^&*(SFDFHFXGNCVNJFGvxcvxchvbchvhdkj'
 
 function UserAuthorization(req,res,next){
-    const token=req.headers.authorization.split(" ")[1];
+    //console.log(req.cookies);
+    let token=req.headers.authorization.split(" ")[1];
+    console.log(token); 
     if(token)
     {
         try{
@@ -20,7 +25,8 @@ function UserAuthorization(req,res,next){
             req['userData']=data;
             next();
         }catch(error){
-            res.json({error:true,message:"Unauthorized"});
+            
+            res.json({error:true,message:"Unauthorize"});
         }
     }
     else{
@@ -34,7 +40,10 @@ app.post("/admin-login",indexController.adminLoginHandler)
 // Public Pages
 app.post("/user-signin",indexController.UserSigninHandler)
 app.post("/user-signup",indexController.UserSignupHandler)
+app.post("/add-dealer",indexController.addDealerHandler)
 
+// Admin API's
+app.post("/add-category",UserAuthorization,indexController.addCategoryHandler)
 
 let port = 5000;
 app.listen(port,(error)=>{

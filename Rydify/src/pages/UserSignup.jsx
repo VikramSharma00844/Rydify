@@ -29,7 +29,7 @@ async function onSubmit(data){
         reset();
         console.log("Record inserted")
         setTimeout(()=>{
-            navigate('user-signin')
+            navigate('/user-signin')
         },2000);
     }
    }

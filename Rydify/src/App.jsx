@@ -6,6 +6,7 @@ import UserSignup from "./pages/UserSignup.jsx";
 import UserSignin from "./pages/UserSignin.jsx";
 import About from "./pages/About.jsx";
 import Contact from "./pages/Contact.jsx";
+import Dealer from "./pages/Dealer.jsx";
 
 
 
@@ -18,7 +19,8 @@ import UserHome from "./pages/users/UserHome.jsx";
 // Admin Pages
 import AdminLayout from './Layouts/AdminLayout.jsx';
 import AdminLogin from "./pages/AdminLogin.jsx";
-
+import AdminHome from "./pages/admin/AdminHome.jsx";
+import Categories from './pages/admin/Categories.jsx';
 
 function App() {
   
@@ -35,6 +37,11 @@ function App() {
 
             <Route path="user-signup" element={<UserSignup/>} />
             <Route path="user-signin" element={<UserSignin/>} />
+            <Route path="dealer" element={<Dealer/>} />
+
+            <Route path="admin-login" element={<AdminLogin/>} /> 
+
+
           </Route>
 
           {/* User Routes */}
@@ -45,7 +52,9 @@ function App() {
 
           {/* Admin Routes */}
           <Route path="/admin" element={<AdminLayout/>}>
-            <Route path="admin-login" element={<AdminLogin/>} /> 
+            <Route path="admin-home" element={<AdminHome/>} />
+            <Route path="categories" element={<Categories/>} />
+
 
           </Route>
 

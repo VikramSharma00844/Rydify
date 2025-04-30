@@ -1,5 +1,7 @@
 import axios from "axios";
-import {useForm} from "react-hook-form"
+import {useForm} from "react-hook-form";
+import {server_url,getCookie} from "../utils/script.jsx";
+import {useNavigate} from "react-router-dom";
 function AdminLogin(){
     const{
         register,
@@ -8,16 +10,21 @@ function AdminLogin(){
         reset
     }=useForm();
 
-    async function onSubmit(data){
-        
-        console.log(data);
-        let url="http://localhost:5000/"+"admin-login"
-        let response=await axios.post(url,data,);
-        const{error,message,token}=response.data;
-        let duration=86400;
-        document.cookie=`userToken=${token} path=/ max-age=${duration}`;
+    const navigate=useNavigate();
 
-        console.log(token);
+    async function onSubmit(data){
+         console.log(data);
+         let url=server_url+"admin-login"
+         let response=await axios.post(url,data);
+       
+        
+        const {error,message,token}=response.data;
+        //document.cookie=`AdminToken=${token}; path=/ max-a`
+
+        let duration=86000;
+        document.cookie=`AdminToken=${token}; path=/ ; max-age=${duration}`
+
+         console.log(token);
         if(error)
         {
             console.log(error)
@@ -25,26 +32,33 @@ function AdminLogin(){
         else{
             console.log("success");
             //const token=getCookie('userToken');
+            setTimeout(()=>{
+                navigate('/admin/admin-home')
+            },2000);
         }
     }
 
     return(
         <>
         
-        <div className="container">
-            <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="container  shadow m-5 p-2 mx-auto " style={{width:"600px"}}>
+            <form onSubmit={handleSubmit(onSubmit)} className="p-3">
+                <h1 className="text-center" style={{fontSize:"3.7rem",textShadow:"2px 2px 5px red"}}>Admin Login</h1>
             <div className="row">
                     <div className="col-12 mb-3">
-                        <label>Email</label>
-                        <input type="email" id="email" className="form-control" {...register('email')} />
+                        <label className="fs-2">Email</label>
+                        <input type="email" id="email" className="form-control fs-3 p-4" {...register('email')} />
                     </div>
 
                     <div className="col-12 mb-3">
-                        <label>Password</label>
-                        <input type="password" id="password" className="form-control" {...register('password')} />
+                        <label className="fs-2">Password</label>
+                        <input type="password" id="password" className="form-control fs-3 p-4" {...register('password')} />
                     </div>
 
-                    <button className="btn btn-primary">Submit</button>
+                </div>
+                <div className="text-center">
+                <button className="btn btn-primary p-2 fs-3">Submit</button>
+
                 </div>
             </form>
         </div>

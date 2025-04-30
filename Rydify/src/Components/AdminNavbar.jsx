@@ -10,7 +10,7 @@ function AdminNavbar(){
         <div className="logo-header">
             <div className="logo-header-inner logo-header-one">
                 <a href="index.html">
-                <img src="images/logo-light.png" alt="Logo"/>
+                <img src="/images/logo-light.png" alt="Logo"/>
                 </a>
             </div>
         </div>
@@ -34,45 +34,26 @@ function AdminNavbar(){
                             <div className="nav-animation header-nav navbar-collapse collapse d-flex justify-content-between">
                         
                                 <ul className=" nav navbar-nav">
-                                    <li><Link to="/admin/admin-login">Admin Login</Link></li>
+                                    <li><Link to="/admin/admin-home">Home</Link></li>
                                     {/* <li><a href="about-us.html">About</a></li> */}
-                                    <li><Link to="about">About</Link></li>
+                                {/* <li><Link to="about">About</Link></li> */}
+
+
+
                                     <li className="has-child">
-                                        <a href="javascript:;">Cars</a>
+                                        <a href="javascript:;">Settings</a>
                                         <ul className="sub-menu">
-                                            <li><a href="cars.html">Cars</a></li>
-                                            <li><a href="cars-grid-1.html">Cars Grid 1</a></li>
-                                            <li><a href="cars-grid-2.html">Cars Grid 2</a></li>
-                                            <li><a href="cars-grid-3.html">Cars Grid 3</a></li>
-                                            <li><a href="cars-grid-4.html">Cars Grid 4</a></li> 
-                                            <li><a href="cars-detail.html">Cars Detail</a></li>                                              
+                                            <li><a href="cars.html">Change Password</a></li>
+                                            <li><a href="cars-grid-1.html">Logout</a></li>
+                                            <li><a href="cars-grid-2.html">Profile</a></li>
+                                                                                        
                                         </ul>                                
                                     </li>
-                                    <li><a href="service.html">Services</a></li>
-                                    <li className="has-child">
-                                        <a href="javascript:;">Pages</a>
-                                        <ul className="sub-menu">
-                                            <li><a href="dealer-list.html">Dealers</a></li>
-                                            <li><a href="error-404.html">Error 404 </a></li>
-                                            <li><a href="faq.html">Faq</a></li>
-                                            <li><a href="gallery.html">Gallery</a></li>
-                                            <li><a href="plans.html">Plans</a></li> 
-                                            <li><a href="team.html">Team</a></li>
-                                            <li><a href="team-detail.html">Team Detail</a></li>
-                                            <li><a href="testimonial.html">Testimonials</a></li>                                             
-                                        </ul>                           
-                                    </li>
+                                   
                                     
                                     {/* <li><a href="contact-us.html">Contact</a></li>   */}
-                                    <li><Link to="contact">Contact</Link></li>
-                                    <li><Link>Users</Link></li>
-                                    <li className="has-child">
-                                        <a href="javascript:;">User</a>
-                                        <ul className="sub-menu">
-                                            <li><Link to="user-signin">Sign In</Link></li>
-                                            <li><Link to="user-signup">Sign Up</Link></li>
-                                        </ul>                           
-                                    </li>
+                                    
+                                    
                                 </ul>
     
                             </div>
