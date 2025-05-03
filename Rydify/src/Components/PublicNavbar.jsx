@@ -44,7 +44,14 @@ function PublicNavbar(){
                                     <li><Link to="contact">Contact</Link></li>
 
                                     {/* Dealer */}
-                                    <li><Link to="dealer">Dealer</Link></li>
+                                    {/* <li><Link to="dealer">Dealer</Link></li> */}
+                                    <li className="has-child">
+                                        <a href="javascript:;">Dealer</a>
+                                        <ul className="sub-menu">
+                                            <li><Link to="dealer-signin">Sign In</Link></li>
+                                            <li><Link to="dealer-signup">Sign Up</Link></li>
+                                        </ul>                           
+                                    </li>
                                     
                                     <li className="has-child">
                                         <a href="javascript:;">User</a>

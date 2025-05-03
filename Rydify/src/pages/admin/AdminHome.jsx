@@ -2,7 +2,7 @@ import {Link} from "react-router-dom";
 function AdminHome(){
     return(
         <>
-        <Link to="/admin/categories"><button>Add Category</button></Link>
+       <p>Admin Home</p>
        
         </>
     )

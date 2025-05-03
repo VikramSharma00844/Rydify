@@ -108,6 +108,7 @@ indexController.addCategoryHandler=(req,res)=>{
 
 
 indexController.addDealerHandler=(req,res)=>{
+    
     console.log(req.body);
     let name=req.body.name;
     let email=req.body.email;
@@ -119,21 +120,65 @@ indexController.addDealerHandler=(req,res)=>{
     let address=req.body.address;
     let city=req.body.city;
     let status=req.body.status;
-    let photo=req.body.photo;
+    let photo=req.files.photo;
+
+    let serverPath= `public/dealerPhoto/${photo.name}`  ;
+    let dbPath=  `/dealerPhoto/${photo.name}`  ;
+    
+
 
     // const [name,email,password,adhar,pan,mobile,gender,address,city,status,photo]=req.body;
 
-    let values=[name,email,password,adhar,pan,mobile,gender,address,city,status,photo];
+    photo.mv(serverPath,(error)=>{
+        if(error){
+            res.json({error:true,message:error.message});
+        }
+        else{
 
-    let insertQuery="insert into dealer(name,email,password,adhar,pan,mobile,gender,address,city,status,photo) values(?,?,?,?,?,?,?,?,?,?,?) ";
+            let values=[name,email,password,adhar,pan,mobile,gender,address,city,status,dbPath];
 
-    connection.query(insertQuery,values,(error)=>{
+            let insertQuery="insert into dealer(name,email,password,adhar,pan,mobile,gender,address,city,status,photo) values(?,?,?,?,?,?,?,?,?,?,?) ";
+
+            connection.query(insertQuery,values,(error)=>{
+            if(error)
+            {
+              res.json({error:true,message:error.message});
+            }
+            else{
+                res.json({error:false,message:"Dealer Added Successfully"})
+            }
+            })
+        }
+    })
+
+    
+}
+
+indexController.fetchDealerInfo=(req,res)=>{
+    let selectQuery="select * from dealer";
+
+    connection.query(selectQuery,(error,records)=>{
+        if(error){
+            res.json({error:true,message:error.message,records:[]})
+        }
+        else{
+            res.json({error:false,message:"Record Fetched Successfully",records:records})
+        }
+    })
+}
+
+indexController.deleteDealerHandler=(req,res)=>{
+    let id=req.params.id;
+    console.log(id);
+
+    let deleteQuery="delete from dealer where id=?";
+    connection.query(deleteQuery,id,(error)=>{
         if(error)
         {
             res.json({error:true,message:error.message});
         }
         else{
-            res.json({error:false,message:"Dealer Added Successfully"})
+            res.json({error:false,message:"Dealer Deleted Successfully"});
         }
     })
 }

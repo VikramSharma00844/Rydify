@@ -2,6 +2,9 @@ const express=require('express');
 const indexController=require('./controller/index.controller');
 const app=express();
 
+const fileUpload=require('express-fileupload');
+app.use(fileUpload());
+
 var cookieParser=require('cookie-parser');
 app.use(cookieParser());
 
@@ -14,7 +17,7 @@ app.use(express.json());
 const jwt=require('jsonwebtoken');
 const secret='123456789!@#$%%^^&*(SFDFHFXGNCVNJFGvxcvxchvbchvhdkj'
 
-function UserAuthorization(req,res,next){
+function AdminAuthorization(req,res,next){
     //console.log(req.cookies);
     let token=req.headers.authorization.split(" ")[1];
     console.log(token); 
@@ -43,7 +46,9 @@ app.post("/user-signup",indexController.UserSignupHandler)
 app.post("/add-dealer",indexController.addDealerHandler)
 
 // Admin API's
-app.post("/add-category",UserAuthorization,indexController.addCategoryHandler)
+app.post("/add-category",AdminAuthorization,indexController.addCategoryHandler)
+app.get("/fetch-dealer",indexController.fetchDealerInfo)
+app.delete("/delete-dealer/:id",indexController.deleteDealerHandler)
 
 let port = 5000;
 app.listen(port,(error)=>{

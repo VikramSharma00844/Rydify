@@ -38,7 +38,9 @@ function AdminNavbar(){
                                     {/* <li><a href="about-us.html">About</a></li> */}
                                 {/* <li><Link to="about">About</Link></li> */}
 
+                                <li><Link to="/admin/categories">Add Category</Link></li>
 
+                                <li><Link to="manage-dealer">Manage Dealer</Link></li>
 
                                     <li className="has-child">
                                         <a href="javascript:;">Settings</a>
@@ -49,6 +51,8 @@ function AdminNavbar(){
                                                                                         
                                         </ul>                                
                                     </li>
+
+                                    
                                    
                                     
                                     {/* <li><a href="contact-us.html">Contact</a></li>   */}

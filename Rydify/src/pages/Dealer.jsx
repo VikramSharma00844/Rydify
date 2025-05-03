@@ -1,6 +1,7 @@
 import {useForm} from "react-hook-form";
 import axios from "axios";
 import {server_url,getCookie} from "./../utils/script.jsx";
+import {toast} from "react-toastify";
 
 
 function Dealer(){
@@ -21,10 +22,10 @@ function Dealer(){
         const {error,message}=response.data;
         if(error)
         {
-            console.log(message);
+            toast.error(message);
         }
         else{
-            console.log(message);
+            toast.success(message);
         }
     }
     return(
@@ -88,7 +89,7 @@ function Dealer(){
 
                 <div className="col-md-6">
                     <label>Photo</label>
-                    <input type="text" className="form-control p-4 fs-4 mb-3" {...register('photo')} />
+                    <input type="file" className="form-control fs-4  mb-3" style={{height:"50px"}} {...register('photo')} />
                 </div>
 
                 <div className="col-md-12 col-2">
