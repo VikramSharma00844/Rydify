@@ -39,7 +39,7 @@ function Footer(){
                                 <div className="row">
                                     <div className="col-lg-5 col-md-6 col-6 m-b20">
                                         
-                                        <div className="widget widget_time-duraion">
+                                        <div className="widget widget_time-duraion ">
                                             <h3 className="widget-title">Quick Links</h3>
                                             <ul>
                                                 <li><span>Monday - Friday:</span>09:00 AM - 09:00 PM</li>
@@ -94,7 +94,7 @@ function Footer(){
                                     <div className="twm-nl-section">
                                         <form>
                                             <div className="ftr-nw-form">
-                                                <input name="news-letter" className="form-control" placeholder="Email address..." type="text"/>
+                                                <input name="news-letter" className="form-control p-4 fs-4" placeholder="Email address..." type="text"/>
                                                 <button className="ftr-nw-subcribe-btn"><i className="feather feather-arrow-up-right"></i></button>
                                             </div>
                                         </form>
@@ -112,7 +112,7 @@ function Footer(){
             <div className="footer-bottom">
                 <div className="footer-bottom-info">
                     <div className="footer-copy-right">
-                        <span className="copyrights-text">© 2024<span className="site-text-primary">Carntel</span> All  rights reserved.</span>
+                        <span className="copyrights-text">© 2025<span className="site-text-primary">Rydify</span> All  rights reserved.</span>
                     </div>
                 </div>
             </div>

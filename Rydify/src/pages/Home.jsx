@@ -11,8 +11,8 @@ function Home(){
 
                                     <div className="twm-sm-title left">Premium</div>
                                     <h2 className="twm-banner-title">
-                                        <em className="txt-type" data-wait="3000" data-words='["The Best Rental", "Wide Range of"]'></em>
-                                        Cars<span>&</span>Bikes
+                                        <em className="txt-type" data-wait="3000" data-words='["The Best Rental", "Wide Range of"]'>The Best Rental</em>
+                                        Cars
                                     </h2>
 
                                     <div className="twm-banner-search-tabs">

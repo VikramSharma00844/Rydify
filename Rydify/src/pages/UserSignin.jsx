@@ -20,7 +20,11 @@ function UserSignin(){
        let url=server_url+"user-signin";
         let response=await axios.post(url,data);
 
-        let {error,message}=response.data;
+        let {error,message,token}=response.data;
+        console.log(token);
+        let duration=86000;
+        document.cookie=`UserToken=${token} ; path=/ ; max-age=${duration}`
+
         if(error){
           toast.error(message);
         }

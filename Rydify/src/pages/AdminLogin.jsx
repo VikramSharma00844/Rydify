@@ -2,6 +2,7 @@ import axios from "axios";
 import {useForm} from "react-hook-form";
 import {server_url,getCookie} from "../utils/script.jsx";
 import {useNavigate} from "react-router-dom";
+import {toast} from "react-toastify";
 function AdminLogin(){
     const{
         register,
@@ -27,11 +28,10 @@ function AdminLogin(){
          console.log(token);
         if(error)
         {
-            console.log(error)
+           toast.error(message);
         }
         else{
-            console.log("success");
-            //const token=getCookie('userToken');
+            toast.success(message)
             setTimeout(()=>{
                 navigate('/admin/admin-home')
             },2000);

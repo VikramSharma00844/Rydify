@@ -14,6 +14,8 @@ import DealerSignin from "./pages/DealerSignin.jsx";
 // User Pages
 import UserLayout from "./Layouts/UserLayout.jsx";
 import UserHome from "./pages/users/UserHome.jsx";
+import ChangePassword from './pages/users/ChangePassword.jsx';
+
 
 
 // Dealer Pages
@@ -56,6 +58,7 @@ function App() {
           {/* User Routes */}
           <Route path="/user" element={<UserLayout/>}>
             <Route path="home" element={<UserHome/>}  />
+            <Route path="user-change-password"  element={<ChangePassword/>} />
 
           </Route>
 

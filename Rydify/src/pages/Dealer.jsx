@@ -14,9 +14,38 @@ function Dealer(){
     }=useForm();
 
     async function onSubmit(data){
-        console.log(data);
+        try{
+            console.log(data);
+
+            var name=data.name;
+            var email=data.email;
+            var password=data.password;
+            var adhar=data.adhar;
+            var pan=data.pan;
+            var mobile=data.mobile;
+            var gender=data.gender;
+            var city=data.city;
+            var status=data.status;
+            var photo=data.photo[0];
+            var address=data.address;
+
+            var formData=new FormData();
+            formData.append('name',name);
+            formData.append('email',email);
+            formData.append('password',password);
+            formData.append('adhar',adhar);
+            formData.append('pan',pan);
+            formData.append('mobile',mobile);
+            formData.append('gender',gender);
+            formData.append('city',city);
+            formData.append('status',status);
+            formData.append('photo',photo);
+            formData.append('address',address);
+            
+
+
         const url=`${server_url}add-dealer`;
-        let response=await axios.post(url,data);
+        let response=await axios.post(url,formData);
         console.log(response);
 
         const {error,message}=response.data;
@@ -26,6 +55,10 @@ function Dealer(){
         }
         else{
             toast.success(message);
+        }
+        }
+        catch{
+
         }
     }
     return(
@@ -104,4 +137,48 @@ function Dealer(){
         </>
     )
 }
-export default Dealer;     
+export default Dealer;  
+
+// async function onSubmit(data) {
+//     try {
+
+//         console.log(data);
+
+//         var name = data.name;
+//         var email = data.email;
+//         var mobile =data.mobile;
+//         var password = data.password;
+//         var address = data.address;
+//         var photo = data.photo[0];
+
+
+//         var formData = new FormData();
+//         formData.append('name',name)
+//         formData.append('email',email)
+//         formData.append('mobile',mobile)
+//         formData.append('password',password)
+//         formData.append('address',address)
+//         formData.append('photo',photo)
+
+
+
+//         const url = `${server_url}/user/signupuser`;
+//         let response = await axios.post(url, formData);
+//         // console.log(response.data)
+
+//         const {error, message, token} = response.data;
+
+//         if (error) {
+//             toast.error(message);
+//         } else {
+//             reset();
+//             toast.success(message);
+
+//             setTimeout(() => {
+//                 navigate('/user-login')
+//             }, 2000);
+//         }
+//     } catch (error) {
+//         console.log(error.message)
+//     }
+// }

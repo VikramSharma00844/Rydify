@@ -50,7 +50,15 @@ indexController.UserSigninHandler=(req,res)=>{
                 res.json({error:true,message:"Invalid Email/Pasaword"})
             }
             else{
-                res.json({error:false,message:"Login Successfully"})
+                const payload={
+                    id:record[0].id,
+                    email:record[0].email,
+                    password:record[0].password
+                };
+                
+                const token=jwt.sign(payload,secret,{expiresIn:'1d'});
+
+                res.json({error:false,message:"Login Successfully",token:token})
             }
         }
     })
@@ -154,6 +162,54 @@ indexController.addDealerHandler=(req,res)=>{
     
 }
 
+indexController.updateDealerHandler=(req,res)=>{
+    
+    console.log(req.body);
+    let id=req.body.id;
+    let name=req.body.name;
+    let email=req.body.email;
+    let password=req.body.password;
+    let adhar=req.body.adhar;
+    let pan=req.body.pan;
+    let mobile=req.body.mobile;
+    let gender=req.body.gender;
+    let address=req.body.address;
+    let city=req.body.city;
+    let status=req.body.status;
+    let photo=req.files.photo;
+
+    let serverPath= `public/dealerPhoto/${photo.name}`  ;
+    let dbPath=  `/dealerPhoto/${photo.name}`  ;
+    
+
+
+    // const [name,email,password,adhar,pan,mobile,gender,address,city,status,photo]=req.body;
+
+    photo.mv(serverPath,(error)=>{
+        if(error){
+            res.json({error:true,message:error.message});
+        }
+        else{
+
+            let values=[name,email,password,adhar,pan,mobile,gender,address,city,status,dbPath,id];
+
+            //let updateQuery="update dealer set name="?",email="?",password="?",adhar="?",pan="?",mobile="?",gender="?",address="?",city="?",staus="?",photo="?"  where id=? ";
+
+            connection.query(updateQuery,values,(error)=>{
+            if(error)
+            {
+              res.json({error:true,message:error.message});
+            }
+            else{
+                res.json({error:false,message:"Dealer Added Successfully"})
+            }
+            })
+        }
+    })
+
+    
+}
+
 indexController.fetchDealerInfo=(req,res)=>{
     let selectQuery="select * from dealer";
 
@@ -181,6 +237,18 @@ indexController.deleteDealerHandler=(req,res)=>{
             res.json({error:false,message:"Dealer Deleted Successfully"});
         }
     })
+}
+
+// User APIs
+
+indexController.userChangePasswordHandler=(req,res)=>{
+    console.log(req.body);
+    
+    const {current_password,new_passsword,confirm_password}=req.body;
+
+    let updateQuery="update dealer set password";
+
+    let values=[]
 }
 
 

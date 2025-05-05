@@ -36,7 +36,7 @@ function UserNavbar(){
                                 <ul className=" nav navbar-nav">
                                     <li><Link to="/user/home">Home</Link></li>
                                     <li><Link to="/user/home">Profile</Link></li>
-                                    <li><Link to="/user/home">Change Password</Link></li>
+                                    <li><Link to="/user/user-change-password">Change Password</Link></li>
                                     <li><Link to="/user/home">Logout</Link></li>
 
                                     {/* <li><a href="about-us.html">About</a></li> */}

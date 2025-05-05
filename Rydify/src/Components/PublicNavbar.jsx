@@ -77,12 +77,12 @@ function PublicNavbar(){
                 <ul className="wt-topbar-left-info">
                     <li>
                         <a href="tel:+712021022525">
-                            <span><i className="feather feather-mail"></i></span>+71 202 102 2525
+                            <span><i className="feather feather-mail"></i></span>+71 769 655 8779
                         </a>
                     </li>
                     <li>
                         <a href="mailto:someone@example.com">
-                            <span><i className="feather feather-phone-call"></i></span>carntelinfo@gmail.com
+                            <span><i className="feather feather-phone-call"></i></span>rydify@gmail.com
                         </a>
                     </li>
                 </ul>   

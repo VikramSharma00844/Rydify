@@ -38,6 +38,27 @@ function AdminAuthorization(req,res,next){
     }
 }
 
+function UserAuthorization(req,res,next){
+    //console.log(req.cookies);
+    let token=req.headers.authorization.split(" ")[1];
+    console.log(token); 
+    if(token)
+    {
+        try{
+            let data=jwt.verify(token,secret);
+            req['userData']=data;
+            next();
+        }catch(error){
+            
+            res.json({error:true,message:"Unauthorize"});
+        }
+    }
+    else{
+        res.json({error:true,message:"Unauthorized"});
+        
+    }
+}
+
 app.post("/admin-login",indexController.adminLoginHandler)
 
 // Public Pages
@@ -45,10 +66,14 @@ app.post("/user-signin",indexController.UserSigninHandler)
 app.post("/user-signup",indexController.UserSignupHandler)
 app.post("/add-dealer",indexController.addDealerHandler)
 
+// User APIs
+app.post("/user-change-password",indexController.userChangePasswordHandler)
+
 // Admin API's
 app.post("/add-category",AdminAuthorization,indexController.addCategoryHandler)
 app.get("/fetch-dealer",indexController.fetchDealerInfo)
-app.delete("/delete-dealer/:id",indexController.deleteDealerHandler)
+app.delete("/delete-dealer/:id",AdminAuthorization,indexController.deleteDealerHandler)
+app.post("/update-dealer",indexController.updateDealerHandler)
 
 let port = 5000;
 app.listen(port,(error)=>{
